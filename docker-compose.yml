@@ -1,0 +1,18 @@
+services:
+  pi-box:
+    build:
+      context: .
+      args:
+        HOST_UID: "${HOST_UID:-1000}"
+        HOST_GID: "${HOST_GID:-1000}"
+    container_name: pi-box
+    volumes:
+      - "./workspace:/home/dev/workspace"
+      - "./agent:/home/dev/.pi/agent"
+      - "./tmuxinator:/home/dev/.config/tmuxinator"
+      - "./authorized_keys:/home/dev/.ssh/authorized_keys:ro"
+    env_file:
+      - .env
+    restart: unless-stopped
+    init: true
+

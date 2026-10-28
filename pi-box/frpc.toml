@@ -1,0 +1,13 @@
+serverAddr = "FRPC_ADDR"
+serverPort = 7000
+
+auth.method = "token"
+auth.token = "FRPC_TOKEN"
+
+# Forward container SSH to public:3141.
+[[proxies]]
+name = "pi-box-ssh"
+type = "tcp"
+localIP = "127.0.0.1"
+localPort = 22
+remotePort = FRPC_PORT

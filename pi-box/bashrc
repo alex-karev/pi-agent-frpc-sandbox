@@ -1,0 +1,8 @@
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias ip='ip -color=auto'
+alias diff='diff --color=auto'
+alias svim='sudo nvim'
+alias mux="tmuxinator start"
+alias tavily-usage='KEY=$(python3 -c "import json; print(json.load(open(\"/home/alex/.pi/agent/web-search.json\"))[\"tavilyApiKey\"])"); curl -s -X GET "https://api.tavily.com/usage" -H "Authorization: Bearer $KEY" | jq'
+

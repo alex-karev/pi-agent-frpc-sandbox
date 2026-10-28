@@ -1,0 +1,9 @@
+.idea/
+.vscode/
+secrets/
+.env
+authorized_keys
+workspace/
+agent/
+tmuxinator/
+custom-frpc.toml
