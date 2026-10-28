@@ -5,4 +5,4 @@ alias diff='diff --color=auto'
 alias svim='sudo nvim'
 alias mux="tmuxinator start"
 alias tavily-usage='KEY=$(python3 -c "import json; print(json.load(open(\"/home/alex/.pi/agent/web-search.json\"))[\"tavilyApiKey\"])"); curl -s -X GET "https://api.tavily.com/usage" -H "Authorization: Bearer $KEY" | jq'
-
+PS1='\[\e[91m\]pi-box\[\e[0m\] \[\e[90m\]\W\[\e[0m\] \[\e[91m\]>\[\e[0m\] '
