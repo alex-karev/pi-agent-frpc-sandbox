@@ -49,7 +49,7 @@ RUN chmod 0755 /usr/local/bin/entrypoint.sh
 
 COPY bashrc /home/dev/.bash_aliases
 COPY tmux.conf /home/dev/.config/tmux/tmux.conf
-COPY frpc.toml /etc/frpc/frpc.toml
+COPY frpc.toml.template /etc/frp/frpc.toml.template
 
 WORKDIR /home/dev/workspace
 

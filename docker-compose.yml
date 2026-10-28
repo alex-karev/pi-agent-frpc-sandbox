@@ -1,7 +1,7 @@
 services:
   pi-box:
     build:
-      context: .
+      context: ./pi-box
       args:
         HOST_UID: "${HOST_UID:-1000}"
         HOST_GID: "${HOST_GID:-1000}"

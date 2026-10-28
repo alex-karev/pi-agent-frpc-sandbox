@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-: "${FRPC_ADDR:?FRPC_ADDR must be set}"
-: "${FRPC_TOKEN:?FRPC_TOKEN must be set}"
+: "${FRP_ADDR:?FRP_ADDR must be set}"
+: "${FRP_TOKEN:?FRP_TOKEN must be set}"
 : "${FRP_PORT:?FRP_PORT must be set}"
 
 CONFIG=/etc/frp/frpc.toml
+TEMPLATE=/etc/frp/frpc.toml.template
 
-# Replace placeholders with environment variables.
-sed -i \
-    -e "s|FRPC_ADDR|${FRPC_ADDR//\\/\\\\}|g" \
-    -e "s|FRPC_TOKEN|${FRPC_TOKEN//\\/\\\\}|g" \
-    -e "s|FRP_PORT|${FRP_PORT//\\/\\\\}|g" \
-    "$CONFIG"
+sed \
+    -e "s|FRP_ADDR|${FRP_ADDR}|g" \
+    -e "s|FRP_TOKEN|${FRP_TOKEN}|g" \
+    -e "s|FRP_PORT|${FRP_PORT}|g" \
+    "$TEMPLATE" > "$CONFIG"
 
 /usr/sbin/sshd -D &
 SSHD_PID=$!

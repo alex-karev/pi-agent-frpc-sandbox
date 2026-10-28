@@ -26,7 +26,7 @@ Use it when you want a disposable dev box you can reach from anywhere, without o
 
 On startup, `entrypoint.sh`:
 
-1. Substitutes `FRPC_ADDR`, `FRP_TOKEN`, and `FRP_PORT` into the frp config
+1. Substitutes `FRP_ADDR`, `FRP_TOKEN`, and `FRP_PORT` into the frp config
 2. Starts sshd in the background
 3. Starts `frpc` in the background
 4. Kills the whole container if either process exits
@@ -51,9 +51,9 @@ Edit `.env`:
 
 ```bash
 HOST_UID=1000        # your host uid, or match the build arg
-FRPC_ADDR=123.456.78.90   # your frps server address
-FRPC_TOKEN=very-secure-token
-FRPC_PORT=3141       # public port the container's SSH will be reachable on
+FRP_ADDR=123.456.78.90   # your frps server address
+FRP_TOKEN=very-secure-token
+FRP_PORT=3141       # public port the container's SSH will be reachable on
 ```
 
 Put your public key in place:
@@ -86,11 +86,11 @@ ssh -p 3141 dev@123.456.78.90
 |---------------|----------|---------------------|------------------------------------------------|
 | `HOST_UID`    | no       | `1000`              | UID of the `dev` user (build arg and `.env`)   |
 | `HOST_GID`    | no       | `1000`              | GID of the `dev` user                          |
-| `FRPC_ADDR`   | yes      | -                   | Address of your `frps` server                  |
-| `FRPC_TOKEN`  | yes      | -                   | Authentication token for the frp server        |
+| `FRP_ADDR`   | yes      | -                   | Address of your `frps` server                  |
+| `FRP_TOKEN`  | yes      | -                   | Authentication token for the frp server        |
 | `FRP_PORT`    | yes      | -                   | Public port for the SSH proxy on the frp server |
 
-Note: `entrypoint.sh` fails fast if `FRPC_ADDR`, `FRPC_TOKEN`, or `FRP_PORT` are unset. The error messages are there for a reason, don't skip them.
+Note: `entrypoint.sh` fails fast if `FRP_ADDR`, `FRP_TOKEN`, or `FRP_PORT` are unset. The error messages are there for a reason, don't skip them.
 
 ### Mounts
 
